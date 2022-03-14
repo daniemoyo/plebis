@@ -10,6 +10,7 @@ const pool = new Pool({
 });
 
 var indexRouter = require('./routes/index');
+var loginRouter = require('./routes/login');
 var usersRouter = require('./routes/users');
 
 
@@ -18,6 +19,7 @@ app.use(express.json());
    
 
 app.use('/', indexRouter);
+app.use('/login', loginRouter);
 app.use('/users', usersRouter);
 
 app.listen(PORT, ()=>{
