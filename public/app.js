@@ -1,8 +1,12 @@
+
 const hideMain = ()=>{ $("#main").addClass('d-none') };
 const showMain = ()=>{ $("#main").removeClass('d-none') };
 const hideLogin = ()=>{  $("#login").addClass('d-none') };
 const showLogin = ()=>{  $("#login").removeClass('d-none') };
 
+// checking to see if user is logged in
+let isLoggedIn = false;
+let user_id
 const $loginBtn = $('#loginBtn');
 // //QRCODE --Fetching from server->api endpoint-http://localhost:3000/qrcode
 // // fetch("/qrcode")
@@ -17,7 +21,7 @@ $loginBtn.click((e)=>{
     let email  = $("#emailLogin").val();
     let password = $("#passwordLogin").val();
     console.log(email + " " + password);
-    fetch('/login', {
+    fetch('/users/login', {
         method: "POST",
         body: JSON.stringify({
             email:email,
@@ -36,29 +40,41 @@ $loginBtn.click((e)=>{
                 text: data.user
               })
         } else {
+            isLoggedIn= true;
+            user_id = data.user.user_id;
+            sessionStorage.setItem("user_id", user_id);
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
                 text: `Welcome, ${data.user.username}`
-            })
-        showMain()
-        hideLogin()
+            }) 
+            sessionStorage.getItem("user_id");
+            start(); 
         }
     })
     .catch((onRejected)=>{
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'something went wrong!'
+            text: 'Something went wrong!'
           })
     })
 })
        
+// $.session.set('some key', value);
 
 const start = (()=>{
-    hideMain()
-    showLogin()
-    console.log("Its start is working");
+    isLoggedIn = sessionStorage.getItem("user_id")
+    if (isLoggedIn) {
+        showMain()
+        hideLogin() 
+        console.log(sessionStorage.getItem("user_id"));
+        console.log("Its working");
+    } else {
+        hideMain()
+        showLogin()
+    }
+    
 })
 
 start();

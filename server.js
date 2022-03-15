@@ -1,21 +1,23 @@
 require('dotenv').config();
-
 const express = require("express");
+
+const session = require('express-session');
 const app = express();
 const PORT = process.env.PORT;
 
-var indexRouter = require('./routes/index');
-var loginRouter = require('./routes/login');
-var usersRouter = require('./routes/users');
+const indexRouter = require('./routes/index');
+const loginRouter = require('./routes/users');
+const usersRouter = require('./routes/wallet');
 
 
 app.use(express.static("public"));
 app.use(express.json());
-   
+app.use(session({ secret: 'keyboard cat', resave: false, saveUninitialized:true, cookie: { maxAge: 60000 }}))
+
 
 app.use('/', indexRouter);
-app.use('/login', loginRouter);
-app.use('/users', usersRouter);
+app.use('/users', loginRouter);
+app.use('/wallet', usersRouter);
 
 app.listen(PORT, ()=>{
     console.log(`Listening on PORT: ${PORT}`);
