@@ -13,42 +13,46 @@ const $loginBtn = $('#loginBtn');
 // //     img.src = data
 // //     document.body.appendChild(img)
 // // })
-
-// $loginBtn.click((e)=>{
-//     let email  = $("#emailLogin").val();
-//     let password = $("#passwordLogin").val();
-//     console.log(email + " " + password);
-//     fetch('/login', {
-//         method: "GET",
-//         body: JSON.stringify({
-//             email:email,
-//             password:password
-//         }),
-//         headers: {
-//             "Content-type": "application/json"
-//         }
-//     })
-//     .then((res)=> {
-//         console.log(res.json);
-//         return res.json()})
-        
-//     .then((data)=>{
-//         showMain()
-//         hideLogin()
-//         Swal.fire({
-//             icon: 'success',
-//             title: 'Success',
-//             text: `Welcome, ${data.username}`
-//           })
-//     })
-//     .catch((onRejected)=>{
-//         Swal.fire({
-//             icon: 'error',
-//             title: 'Oops...',
-//             text: 'Username or Password is wrong!'
-//           })
-//     })
-// })
+$loginBtn.click((e)=>{
+    let email  = $("#emailLogin").val();
+    let password = $("#passwordLogin").val();
+    console.log(email + " " + password);
+    fetch('/login', {
+        method: "POST",
+        body: JSON.stringify({
+            email:email,
+            password:password
+        }),
+        headers: {
+            "Content-type": "application/json"
+        }
+    })
+    .then((res)=> res.json())
+    .then((data)=>{
+        if (!data.message) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: data.user
+              })
+        } else {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: `Welcome, ${data.user.username}`
+            })
+        showMain()
+        hideLogin()
+        }
+    })
+    .catch((onRejected)=>{
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'something went wrong!'
+          })
+    })
+})
        
 
 const start = (()=>{
