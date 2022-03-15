@@ -13,41 +13,42 @@ const $loginBtn = $('#loginBtn');
 // //     img.src = data
 // //     document.body.appendChild(img)
 // // })
-$loginBtn.click((e)=>{
-    let email  = $("#emailLogin").val();
-    let password = $("#passwordLogin").val();
-    console.log(email + " " + password);
-    fetch('/login', {
-        method: "GET",
-        body: JSON.stringify({
-            email:email,
-            password:password
-        }),
-        headers: {
-            "Content-type": "application/json"
-        }
-    })
-    .then((res)=> {
-        console.log(res.json);
-        return res.json()})
+
+// $loginBtn.click((e)=>{
+//     let email  = $("#emailLogin").val();
+//     let password = $("#passwordLogin").val();
+//     console.log(email + " " + password);
+//     fetch('/login', {
+//         method: "GET",
+//         body: JSON.stringify({
+//             email:email,
+//             password:password
+//         }),
+//         headers: {
+//             "Content-type": "application/json"
+//         }
+//     })
+//     .then((res)=> {
+//         console.log(res.json);
+//         return res.json()})
         
-    .then((data)=>{
-        showMain()
-        hideLogin()
-        Swal.fire({
-            icon: 'success',
-            title: 'Success',
-            text: `Welcome, ${data.username}`
-          })
-    })
-    .catch((onRejected)=>{
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Username or Password is wrong!'
-          })
-    })
-})
+//     .then((data)=>{
+//         showMain()
+//         hideLogin()
+//         Swal.fire({
+//             icon: 'success',
+//             title: 'Success',
+//             text: `Welcome, ${data.username}`
+//           })
+//     })
+//     .catch((onRejected)=>{
+//         Swal.fire({
+//             icon: 'error',
+//             title: 'Oops...',
+//             text: 'Username or Password is wrong!'
+//           })
+//     })
+// })
        
 
 const start = (()=>{
