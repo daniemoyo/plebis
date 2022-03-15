@@ -18,7 +18,7 @@ $loginBtn.click((e)=>{
     let password = $("#passwordLogin").val();
     console.log(email + " " + password);
     fetch('/login', {
-        method: "POST",
+        method: "GET",
         body: JSON.stringify({
             email:email,
             password:password
@@ -27,7 +27,10 @@ $loginBtn.click((e)=>{
             "Content-type": "application/json"
         }
     })
-    .then((res)=> res.json())
+    .then((res)=> {
+        console.log(res.json);
+        return res.json()})
+        
     .then((data)=>{
         showMain()
         hideLogin()

@@ -2,12 +2,7 @@ require('dotenv').config();
 
 const express = require("express");
 const app = express();
-const PORT = 3000;
-//new stuff
-const { Pool } = require("pg");
-const pool = new Pool({
-    database: "crypto_db",
-});
+const PORT = process.env.PORT || 3000;
 
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');

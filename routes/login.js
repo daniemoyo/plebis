@@ -1,15 +1,25 @@
 var express = require('express');
+require('dotenv').config();
 var router = express.Router();
 
-/* GET login info. */
-router.get('/login', (req, res, next) =>{
-  const { email, password } = req.body 
+const { Pool } = require("pg");
 
-  pool.query('SELECT * FROM users WHERE email=$1',[email], (err, result)=> {
-      console.log(result.rows[0]);
-      res.json(result.rows[0]);
+const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false,
+    },
+});
+
+
+
+/* GET home page. */
+
+
+router.get('/', (req, res, next) =>{
+  pool.query('SELECT * FROM currency', (err, result)=> {
+    res.json(result.rows);
   })
 });
 
 module.exports = router;
-

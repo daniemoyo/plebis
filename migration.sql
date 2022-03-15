@@ -29,7 +29,7 @@ CREATE TABLE currency (
 );
 
 insert into users (user_id, username, email, password, created_at) values (1, 'spiquard0', 'daniel', '1234', '2022-03-01 07:05:09');
-insert into users (user_id, username, email, password, created_at) values (2, 'bpym1', 'jmullin1@dell.com', 'Ez8NhR1QQk6', '2022-01-26 17:45:06');
+insert into users (user_id, username, email, password, created_at) values (2, 'bpym1', 'admin', '123456', '2022-01-26 17:45:06');
 insert into users (user_id, username, email, password, created_at) values (3, 'sbonanno2', 'ddacey2@independent.co.uk', 'Wt1PFgv4UOl2', '2021-07-03 13:50:01');
 insert into users (user_id, username, email, password, created_at) values (4, 'gwittering3', 'kigonet3@xinhuanet.com', '5ZxCX3qJfto', '2021-08-12 20:59:43');
 insert into users (user_id, username, email, password, created_at) values (5, 'sstammler4', 'tfiltness4@diigo.com', 'iIDDptKJzqYB', '2021-03-11 20:36:17');
