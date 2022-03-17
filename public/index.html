@@ -34,8 +34,8 @@
        
         <div class="container-fluid shadow-custom">
             <div class="row">
-                <main class="flex-row bg-glass" >
-                  <div id="cardGroup" class="row d-flex flex list-group-flush justify-content-start das border-0">
+                <main class="flex-row bg-glass bg-opacity-25" >
+                  <div id="cardGroup" class="row d-flex flex list-group-flush justify-content-start das border-0 bg-opacity-25">
                         <div class="card d-flex text-center col-3 border-0 ">
                             <img id="imgThumbnail" class="img-thumbnail border-0 embossed">
                             <div class="card-body das border-0">
@@ -47,8 +47,8 @@
                             <div class="mt-4 border-0">
                                 <h4 class="text-center border-0 embossed link-success">Address <span id="badgeNum" class="badge bg-warning rounded-pill"></span></h4>
                             </div>
-                            <div id="cardAddressDiv" class="card-body ">
-                                <ul id="cardAddress" class="list-group border-0">
+                            <div id="cardAddressDiv" class="card-body bg-opacity-25">
+                                <ul id="cardAddress" class="list-group border-0 bg-opacity-25">
                                     
                                 </ul>
                             </div>
@@ -77,39 +77,30 @@
     </div>
     <!-- Login / Signup -->
     <div  class="d-flex justify-content-center align-items-center mt-5">
-        <div id="login" class="card">
-            <ul class="nav nav-pills mb-3 " id="pills-tab" role="tablist">
-                <li class="nav-item text-center"> <a class="nav-link active btl" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Login</a> </li>
-                <li class="nav-item text-center"> <a class="nav-link btr" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Signup</a> </li>
+        <div id="login" class="card daz border-0">
+            <ul class="nav nav-pills mb-3 link-danger " id="pills-tab" role="tablist">
+                <li class="nav-item text-center link-success"> <a class="nav-link btl link-success" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Login</a> </li>
+ 
             </ul>
-            <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <div class="tab-content" id="pills-tabContent daz">
+                <div class="tab-pane fade show active daz" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                     <div class="form px-4"> 
                         <input id="emailLogin" type="text" type="email" name="email" class="form-control" placeholder="Email"> 
                         <input id="passwordLogin" type="password" name="password" class="form-control" placeholder="Password"> 
-                        <button id="loginBtn" class="btn btn-primary btn-block">Login</button> 
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                    <div class="form px-4"> 
-                        <input type="text" name="" class="form-control" placeholder="Email"> 
-                        <input type="text" name="" class="form-control" placeholder="Password"> 
-                        <button class="btn btn-warning btn-block">Signup</button> 
+                        <button id="loginBtn" class="btn btn-warning btn-block">Login</button> 
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="offcanvas offcanvas-start daz" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
-      <div class="offcanvas-header">
+      <div class="offcanvas-header link-success">
         <h5 class="offcanvas-title" id="offcanvasLabel">SEND / RECEIVE</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <button type="button" class="btn-close text-reset link-success" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
-      <div class="offcanvas-body das">
+      <div class="offcanvas-body das bg-opacity-25 text-light">
         <div>
-          !!!!!!    ON THE TODO LIST   !!!!!!
-          <p>slkdfjlskdjflskjdflksdjf</p>
-          
+          !!!! TO DO !!!!
         </div>
       </div>
     </div>
