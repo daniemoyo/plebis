@@ -118,7 +118,7 @@ $creatAddress.on("click",(e)=>{
         img.src = data.qrURL
         console.log(img.src);
         const createdPublicAddress  = data.wallet.pri_key;
-        const el = `<li id="walletAddress" class="list-group-item d-flex justify-content-between align-items-center"><a>${data.wallet.address} <i class="bi bi-qr-code"></i></a></li>`
+        const el = `<li id="walletAddress" class="list-group-item d-flex justify-content-between align-items-center border-0 engraved"><a>${data.wallet.address} <i class="bi bi-qr-code"></i></a></li>`
         $cardAddress.append(el);
         $("#badgeNum").text(`${user.wallet.length+1}`)
         Swal.fire({
