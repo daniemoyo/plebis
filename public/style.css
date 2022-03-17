@@ -60,3 +60,13 @@
 #login .form button {
     margin-top: 20px
 }
+
+#cardAddress {
+	position: absolute;
+	width: 490px;
+	margin-top: 5px;
+	z-index: 10;
+	height: 300px;
+	max-height: 1340px;
+	overflow-y: scroll;
+  }

@@ -25,8 +25,7 @@ app.listen(PORT, ()=>{
 
 module.exports = app;
 
-// const CoinKey = require('coinkey'); ///COINKEY BITCOIN
-// var coinInfo = require('coininfo'); ///coininfo DOGECOIN
+
 
 // var ck = new CoinKey.createRandom();///Coinkey Generate Random
 // console.log("BITCOIN--- Private Key (Wallet Import Format): " + ck.privateWif)

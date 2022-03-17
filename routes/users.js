@@ -25,25 +25,37 @@ router.post('/login', (req, res) =>{
     }
     if(result.rows[0]===undefined){
       res.status(401).json(response);
-    }else if(result.rows[0].email == email && result.rows[0].password == password){
+    }
+    
+    if(result.rows[0].email == email && result.rows[0].password == password){
       response.message = true;
       response.user = result.rows[0]
       response.isLoggedIn = true;
       req.session.user_id = result.rows[0].user_id
-      res.json(response);
+      
+      pool.query('SELECT * FROM wallet WHERE users_id=$1',[response.user.user_id], (err, result)=> {
+        // console.log(result.rows);
+        const combined = {...response, wallet:"You do not have an address"}
+        if(result.rows[0]===undefined){
+          res.json(combined);
+        }
+        combined.wallet = result.rows
+        res.json(combined)
+      })
     }else{
       res.status(401).json(response)
     }
+    
   })
 });
-router.get('/logout', (req, res) =>{
-  req.session.destroy((err) => {
-      if(err) {
-          return console.log(err);
-      }
-      res.redirect('/');
-  });
+// router.get('/logout', (req, res) =>{
+//   req.session.destroy((err) => {
+//       if(err) {
+//           return console.log(err);
+//       }
+//       res.redirect('/');
+//   });
  
-});
+// });
 
 module.exports = router;
