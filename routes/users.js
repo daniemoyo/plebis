@@ -13,7 +13,7 @@ const pool = new Pool({
 
 /* POST Login Verifcation page. */
 router.post('/login', (req, res) =>{
-  
+
   const { email, password } = req.body
   pool.query('SELECT * FROM users WHERE email=$1',[email], (err, result)=> {
     if(err) throw err;
@@ -21,7 +21,8 @@ router.post('/login', (req, res) =>{
     const response = {
       message:false,
       user: "Invalid username or password",
-      isLoggedIn:false
+      isLoggedIn:false,
+    
     }
     if(result.rows[0]===undefined){
       res.status(401).json(response);
@@ -48,14 +49,5 @@ router.post('/login', (req, res) =>{
     
   })
 });
-// router.get('/logout', (req, res) =>{
-//   req.session.destroy((err) => {
-//       if(err) {
-//           return console.log(err);
-//       }
-//       res.redirect('/');
-//   });
- 
-// });
 
 module.exports = router;

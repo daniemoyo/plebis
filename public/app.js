@@ -1,4 +1,9 @@
 
+// format prices to $$
+var formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  });
 /* currency array for icon src */
 const currencyIcon = ['','https://www.cryptofonts.com/img/icons/btc.svg','https://www.cryptofonts.com/img/icons/doge.svg','https://www.cryptofonts.com/img/icons/algo.svg','https://www.cryptofonts.com/img/icons/eth.svg']
 
@@ -15,8 +20,9 @@ const $btc = $("#1");
 const $doge = $("#2");
 const $algo = $("#3");
 const $eth = $("#4");
+const $prices = $("#prices")
 let isLoggedIn = false;/* Check if user is logged in */
-let userObj = {};
+let prices = {};
 const $loginBtn = $('#loginBtn');
 const $loginOutBtn = $('#logout');
 
@@ -33,18 +39,65 @@ const dash = ()=>{
     $("#imgThumbnail").attr("src", `${currencyIcon[1]}`);
     $("#cardTitle").text(`${currency[user.wallet[0].currency_id]} `);
     $("#badgeNum").text(`${user.wallet.length}`);
-    // <div id="cardAddressDiv d-flex" class="card-body">
-    //     <ul id="cardAddress" class="list-group">
-                                    
-    //     </ul>
-    // </div>1HX6tk8TcdFnAb5m5yA99VNGmEL4vDhFfh
+   
     var el=''
     for (let i = 0; i < user.wallet.length; i++) {
         el += `<li id="walletAddress" class="list-group-item d-flex justify-content-between align-items-center border-0 engraved">`+`${user.wallet[i].address} <i id="qr" class="bi bi-qr-code"></i>`+`</li>`
     }
     $cardAddress.append(el)
-    // return $cardAddress;
+    
 }
+// $.get('https://api.coincap.io/v2/assets/bitcoin', (data) =>{
+//     sessionStorage.setItem("prices",JSON.stringify(data));
+// })
+// const assets =  () =>{
+//     const user = JSON.parse(sessionStorage.prices);
+//             console.log(user);
+            
+//             let name = user.data[0].name;
+//             let marketCap = formatter.format(parseFloat(data.data[0].marketCapUsd).toFixed(2));
+//             let maxSupply = data.data[0].maxSupply;
+//             let price = formatter.format(parseFloat(data.data[i].priceUsd).toFixed(2));
+//             let rank = data.data[0].rank;
+//             let volume = data.data[0].volumeUsd24Hr;
+//             let change = parseFloat(data.data[0].changePercent24Hr).toFixed(2);
+//             // let price = formatter.format(parseFloat(data.data[i].priceUsd).toFixed(2));
+//             let symbol = (data.data[i].symbol).toLowerCase();
+//             symbol === 'bttold'? symbol = 'btt' : symbol;
+//             symbol === 'bttold'? symbol = 'btt' : symbol;
+//             change>0? color='green':color="red";
+
+//             $accord = $(`
+//             <div class="row">
+//                 <div class="card-body">
+//                   <table class="table">
+//                         <tbody>
+//                             <tr>
+//                             <th>Price</th>
+//                                 <td>${price}</td>
+//                             </tr>
+//                             <tr>
+//                             <th>24hr Change</th>
+//                                 <td style="color:${color};">${change}%</td>
+//                             </tr>
+//                             <tr>
+//                             <tr>
+//                             <th>Rank</th>
+//                                 <td>#${rank}</td>
+//                             </tr>
+//                             <tr>
+//                             <th>Market Cap</th>
+//                                 <td>${marketCap}</td>
+//                             </tr>
+//                         </tbody>
+//                 </table>
+//                 <a href="${link}" class="btn btn-primary">More info on ${name}</a>
+//             </div>
+//             </div>`);
+//             $prices.append($accord);
+
+// }
+
 
 /* Generate new Address */
 $creatAddress.on("click",(e)=>{
@@ -138,6 +191,7 @@ const start = (()=>{
     isLoggedIn = sessionStorage.getItem("user_id")
     if (isLoggedIn) {
         dash();
+        // assets() 
         showMain();
         hideLogin();
         console.log(sessionStorage.getItem("user_id"));
